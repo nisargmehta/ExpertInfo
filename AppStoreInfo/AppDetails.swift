@@ -16,6 +16,7 @@ class AppDetails {
     var description: String?
     var rating: Float?
     var iconImage: UIImage?
+    var screenShotUrls: NSArray?
     
 //    init() {
 //        self.appName = "name"

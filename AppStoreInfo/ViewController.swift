@@ -60,7 +60,10 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     
     // MARK: Tableview
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let detailsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "detailsVC") as! DetailsViewController
+        detailsVC.details = self.allEnteries.object(at: indexPath.row) as? AppDetails
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+//        self.present(detailsVC, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,6 +74,7 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
         let details: AppDetails = self.allEnteries.object(at: indexPath.row) as! AppDetails
         cell.textLabel?.text = details.appName
+        cell.detailTextLabel?.text = String(format: "%.1f", details.rating!)
         if let icon = details.iconImage {
             cell.imageView?.image = icon
         } else {
