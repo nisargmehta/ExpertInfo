@@ -49,7 +49,7 @@ class ParseInfo {
             if let desc = appDict.object(forKey: "description") {
                 details.description = desc as? String
             }
-            if let rate = appDict.object(forKey: "rating") {
+            if let rate = appDict.object(forKey: "averageUserRating") {
                 details.rating = rate as? Float
             }
             if let image = appDict.object(forKey: "artworkUrl512") {
@@ -57,6 +57,9 @@ class ParseInfo {
             }
             if let version = appDict.object(forKey: "version") {
                 details.appVersion = version as? String
+            }
+            if let screen = appDict.object(forKey: "screenshotUrls") {
+                details.screenShotUrls = screen as? NSArray
             }
             allApps.add(details)
         }
