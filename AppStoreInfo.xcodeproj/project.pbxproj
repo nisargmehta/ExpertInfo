@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1612E91F64A4CA004AFC6E /* AppDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1612E81F64A4CA004AFC6E /* AppDetails.swift */; };
 		1F780CEF1F535A41008A67E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F780CEE1F535A41008A67E9 /* AppDelegate.swift */; };
 		1F780CF11F535A41008A67E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F780CF01F535A41008A67E9 /* ViewController.swift */; };
 		1F780CF41F535A41008A67E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F780CF21F535A41008A67E9 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1612E81F64A4CA004AFC6E /* AppDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetails.swift; sourceTree = "<group>"; };
 		1F780CEB1F535A41008A67E9 /* AppStoreInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F780CEE1F535A41008A67E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F780CF01F535A41008A67E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				1F780CF01F535A41008A67E9 /* ViewController.swift */,
 				1F780D031F535D82008A67E9 /* ImageDownloader.swift */,
 				1F780D051F5361EE008A67E9 /* ParseInfo.swift */,
+				1F1612E81F64A4CA004AFC6E /* AppDetails.swift */,
 				1F780D071F53892C008A67E9 /* DetailsViewController.swift */,
 				1F780CF21F535A41008A67E9 /* Main.storyboard */,
 				1F780CF81F535A41008A67E9 /* Assets.xcassets */,
@@ -154,6 +157,7 @@
 				1F780D041F535D82008A67E9 /* ImageDownloader.swift in Sources */,
 				1F780CEF1F535A41008A67E9 /* AppDelegate.swift in Sources */,
 				1F780D081F53892C008A67E9 /* DetailsViewController.swift in Sources */,
+				1F1612E91F64A4CA004AFC6E /* AppDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +319,7 @@
 				1F780D021F535A41008A67E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
