@@ -17,6 +17,9 @@
 		1F780D041F535D82008A67E9 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F780D031F535D82008A67E9 /* ImageDownloader.swift */; };
 		1F780D061F5361EE008A67E9 /* ParseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F780D051F5361EE008A67E9 /* ParseInfo.swift */; };
 		1F780D081F53892C008A67E9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F780D071F53892C008A67E9 /* DetailsViewController.swift */; };
+		1FFDADAE1F66489000015475 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDADAD1F66489000015475 /* SavedViewController.swift */; };
+		1FFDADB01F66506000015475 /* CustomCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FFDADAF1F66506000015475 /* CustomCellView.xib */; };
+		1FFDADB21F6653D300015475 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFDADB11F6653D300015475 /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		1F780D031F535D82008A67E9 /* ImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		1F780D051F5361EE008A67E9 /* ParseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseInfo.swift; sourceTree = "<group>"; };
 		1F780D071F53892C008A67E9 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		1FFDADAD1F66489000015475 /* SavedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		1FFDADAF1F66506000015475 /* CustomCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCellView.xib; sourceTree = "<group>"; };
+		1FFDADB11F6653D300015475 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,10 @@
 				1F780D051F5361EE008A67E9 /* ParseInfo.swift */,
 				1F1612E81F64A4CA004AFC6E /* AppDetails.swift */,
 				1F780D071F53892C008A67E9 /* DetailsViewController.swift */,
+				1FFDADAD1F66489000015475 /* SavedViewController.swift */,
+				1FFDADB11F6653D300015475 /* CustomTableViewCell.swift */,
 				1F780CF21F535A41008A67E9 /* Main.storyboard */,
+				1FFDADAF1F66506000015475 /* CustomCellView.xib */,
 				1F780CF81F535A41008A67E9 /* Assets.xcassets */,
 				1F780CFA1F535A41008A67E9 /* LaunchScreen.storyboard */,
 				1F780CFD1F535A41008A67E9 /* Info.plist */,
@@ -139,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F780CFC1F535A41008A67E9 /* LaunchScreen.storyboard in Resources */,
+				1FFDADB01F66506000015475 /* CustomCellView.xib in Resources */,
 				1F780CF91F535A41008A67E9 /* Assets.xcassets in Resources */,
 				1F780CF41F535A41008A67E9 /* Main.storyboard in Resources */,
 			);
@@ -151,12 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FFDADB21F6653D300015475 /* CustomTableViewCell.swift in Sources */,
 				1F780CF11F535A41008A67E9 /* ViewController.swift in Sources */,
 				1F780D061F5361EE008A67E9 /* ParseInfo.swift in Sources */,
 				1F780CF71F535A41008A67E9 /* AppStoreInfo.xcdatamodeld in Sources */,
 				1F780D041F535D82008A67E9 /* ImageDownloader.swift in Sources */,
 				1F780CEF1F535A41008A67E9 /* AppDelegate.swift in Sources */,
 				1F780D081F53892C008A67E9 /* DetailsViewController.swift in Sources */,
+				1FFDADAE1F66489000015475 /* SavedViewController.swift in Sources */,
 				1F1612E91F64A4CA004AFC6E /* AppDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
