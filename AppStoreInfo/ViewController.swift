@@ -16,6 +16,10 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     var isLoading: Bool = false
     var parse: ParseInfo?
     
+    lazy var downloadsInProgress: NSMutableDictionary = {
+        return NSMutableDictionary()
+    }()
+    
     lazy var allEnteries: NSMutableArray = {
         return NSMutableArray()
     }()
@@ -32,7 +36,8 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         self.appInfoTableView.dataSource = self;
 //        self.present(self, animated: false, completion: nil)
         
-        self.appInfoTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        self.appInfoTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
+//        self.appInfoTableView.register(UINib(nibName: "CustomCellView", bundle: nil), forCellReuseIdentifier: "appCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,22 +72,32 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
+        var cell = tableView.dequeueReusableCell(withIdentifier: "appCell") as? CustomTableViewCell
+        if cell == nil {
+            let nibArray = Bundle.main.loadNibNamed("CustomCellView", owner: nil, options: nil)! as NSArray
+            cell = (nibArray.object(at: 0) as! CustomTableViewCell)
+        }
+        cell?.selectionStyle = UITableViewCellSelectionStyle.none
         let details: AppDetails = self.allEnteries.object(at: indexPath.row) as! AppDetails
-        cell.textLabel?.text = details.appName
-        cell.detailTextLabel?.text = String(format: "%.1f", details.rating!)
+//        cell.textLabel?.text = details.appName
+        cell?.theNameLabel.text = details.appName
+        if let rating = details.rating {
+           cell?.ratingLabel.text = String(format: "%.1f", rating)
+        } else {
+            cell?.ratingLabel.text = "n/a"
+        }
         if let icon = details.iconImage {
-            cell.imageView?.image = icon
+            cell?.theImageView.image = icon
         } else {
             self.startImageDownload(details: details, index: indexPath)
-            cell.imageView?.image = UIImage.init(named: "placeholder.png")
+            cell?.theImageView.image = UIImage.init(named: "placeholder.png")
         }
         
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -94,15 +109,21 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
     }
     
     func startImageDownload(details: AppDetails, index: IndexPath) {
-        let downloader = ImageDownloader()
-        downloader.details = details
-        downloader.completionHandler = {
-            DispatchQueue.main.async {
-                let theCell: UITableViewCell = self.appInfoTableView.cellForRow(at: index)!
-                theCell.imageView?.image = details.iconImage
+        if self.downloadsInProgress.object(forKey: index) != nil {
+            print("in progress")
+        } else {
+            let downloader = ImageDownloader()
+            downloader.details = details
+            downloader.completionHandler = {
+                DispatchQueue.main.async {
+                    let theCell: CustomTableViewCell = self.appInfoTableView.cellForRow(at: index)! as! CustomTableViewCell
+                    theCell.theImageView.image = details.iconImage
+                    self.downloadsInProgress.removeObject(forKey: index)
+                }
             }
+            self.downloadsInProgress.setObject(downloader, forKey: index as NSCopying)
+            downloader.startDownload()
         }
-        downloader.startDownload()
     }
 }
 

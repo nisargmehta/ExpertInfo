@@ -17,7 +17,7 @@ class ParseInfo {
     
     func getDataForKeyword(keyWord : NSString) {
         let session = URLSession.shared
-        let request = NSMutableURLRequest(url: NSURL(string: String(format: "https://itunes.apple.com/search?entity=software&term=%@&limit=50",keyWord)) as! URL)
+        let request = NSMutableURLRequest(url: NSURL(string: String(format: "https://itunes.apple.com/search?entity=software&term=%@&limit=100",keyWord)) as! URL)
         let task = session.dataTask(with: request as URLRequest){
             (data, response, error) -> Void in
             if error != nil {
