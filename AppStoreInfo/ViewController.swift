@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, ParsingProtocol {
+class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, ParsingProtocol, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var appInfoTableView: UITableView!
@@ -38,6 +38,11 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         
 //        self.appInfoTableView.register(CustomTableViewCell.self, forCellReuseIdentifier: "cell")
 //        self.appInfoTableView.register(UINib(nibName: "CustomCellView", bundle: nil), forCellReuseIdentifier: "appCell")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.singleTap(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        tapGesture.delegate = self;
+        self.view.addGestureRecognizer(tapGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +95,11 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
         } else {
             cell?.ratingLabel.text = "n/a"
         }
+        if let version = details.appVersion {
+            cell?.versionLabel.text = String(format: "v%@", version)
+        } else {
+            cell?.versionLabel.text = "n/a"
+        }
         if let icon = details.iconImage {
             cell?.theImageView.image = icon
         } else {
@@ -123,6 +133,24 @@ class ViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate
             }
             self.downloadsInProgress.setObject(downloader, forKey: index as NSCopying)
             downloader.startDownload()
+        }
+    }
+    
+    func singleTap(_ sender: UITapGestureRecognizer) {
+        if self.searchBar.isFirstResponder {
+            self.searchBar.resignFirstResponder()
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        if (touch.view?.isDescendant(of: self.appInfoTableView))! == true {
+//            return false
+//        }
+//        return true
+        if self.searchBar.isFirstResponder {
+            return true
+        } else {
+            return false
         }
     }
 }
