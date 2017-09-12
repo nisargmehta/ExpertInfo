@@ -13,5 +13,5 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var theNameLabel: UILabel!
     @IBOutlet weak var theImageView: UIImageView!
-    
+    @IBOutlet weak var versionLabel: UILabel!
 }

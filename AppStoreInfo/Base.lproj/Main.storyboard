@@ -21,24 +21,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DrM-Je-cqo">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="DrM-Je-cqo">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O1q-6g-vHh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="O1q-6g-vHh">
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.39819208119999999" green="0.39819208119999999" blue="0.39819208119999999" alpha="1" colorSpace="calibratedRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.18039215689999999" green="0.19215686269999999" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DrM-Je-cqo" secondAttribute="trailing" id="HaV-gK-S5U"/>
+                            <constraint firstAttribute="trailing" secondItem="O1q-6g-vHh" secondAttribute="trailing" id="Zsq-Mw-Xbd"/>
+                            <constraint firstItem="DrM-Je-cqo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="c4w-zE-G2l"/>
+                            <constraint firstItem="O1q-6g-vHh" firstAttribute="top" secondItem="DrM-Je-cqo" secondAttribute="bottom" id="cpI-Uh-Kvu"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="O1q-6g-vHh" secondAttribute="bottom" id="ePV-K3-qoi"/>
+                            <constraint firstItem="O1q-6g-vHh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fEL-Jy-Lue"/>
+                            <constraint firstItem="DrM-Je-cqo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hxe-1p-IQZ"/>
+                            <constraint firstItem="O1q-6g-vHh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="u8n-Vw-JxS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="App store info" id="fva-Ud-Eg7">
                         <barButtonItem key="rightBarButtonItem" title="saved apps" id="at0-Wi-RGh">
                             <connections>
-                                <segue destination="5uS-RB-eW6" kind="show" id="dOZ-4s-gfK"/>
+                                <segue destination="PEG-j9-HAu" kind="show" id="mCn-uf-PAy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -50,6 +58,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="a7f-7j-cKR">
+            <objects>
+                <tableViewController id="PEG-j9-HAu" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vyu-IO-T4a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RkL-n7-3WJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RkL-n7-3WJ" id="MLN-A7-Akr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PEG-j9-HAu" id="MlN-rF-6hy"/>
+                            <outlet property="delegate" destination="PEG-j9-HAu" id="dto-IO-bnN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IWC-uQ-qkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1993" y="533"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="3yC-8D-ePI">
@@ -118,31 +154,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b5m-4g-yOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1969" y="-142"/>
-        </scene>
-        <!--Saved View Controller-->
-        <scene sceneID="O25-al-3fB">
-            <objects>
-                <viewController storyboardIdentifier="savedApps" id="5uS-RB-eW6" customClass="SavedViewController" customModule="AppStoreInfo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a8g-yA-aW3"/>
-                        <viewControllerLayoutGuide type="bottom" id="fiJ-p5-YVN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="o2T-dV-Ufv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AtF-TO-6Dg">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r5C-lH-fho" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1968.8" y="504.19790104947532"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7jG-iC-DD4">
