@@ -6,12 +6,28 @@
 //  Copyright © 2017 Open Source. All rights reserved.
 //
 
+/*
+ // Define identifier
+ let notificationName = Notification.Name("NotificationIdentifier")
+ 
+ // Register to receive notification
+ NotificationCenter.default.addObserver(self, selector: #selector(YourClassName.methodOfReceivedNotification), name: notificationName, object: nil)
+ 
+ // Post notification
+ NotificationCenter.default.post(name: notificationName, object: nil)
+ 
+ // Stop listening notification
+ NotificationCenter.default.removeObserver(self, name: notificationName, object: nil);
+ */
+
 import Foundation
 import UIKit
 
 class DetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet weak var screenShotsCollection: UICollectionView!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    private var screenWidth: CGFloat = UIScreen.main.bounds.width
     
     var details: AppDetails?
     var isFetching: Bool = true
@@ -34,6 +50,18 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
             self.isFetching = true
             self.populateImages()
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleRotation(notification:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            self.setUIForPortrait()
+        } else {
+            self.setUIForLandscape()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func populateImages() {
@@ -70,7 +98,6 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
         let newImageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 180, height: 300))
         newImageView.image = screen
         cell.contentView.addSubview(newImageView)
-        
         return cell
     }
     
@@ -80,5 +107,24 @@ class DetailsViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.isFetching ? 0 : self.allImages.count
+    }
+    
+    func handleRotation(notification: NSNotification) {
+        screenWidth = UIScreen.main.bounds.width
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            self.setUIForPortrait()
+        } else {
+            self.setUIForLandscape()
+        }
+    }
+    
+    func setUIForPortrait() {
+        self.screenShotsCollection.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 370)
+        self.descriptionTextView.frame = CGRect(x: 10, y: 390, width: screenWidth-2*10, height: 270)
+    }
+    
+    func setUIForLandscape() {
+        self.screenShotsCollection.frame = CGRect(x: 0, y: 0, width: screenWidth/2, height: 375)
+        self.descriptionTextView.frame = CGRect(x: screenWidth/2 + 10, y: 20, width: screenWidth/2-2*10, height: 375-40)
     }
 }
